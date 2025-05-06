@@ -9,10 +9,10 @@ function App() {
         {mainRoutes.map((route) => (
           <Route key={route.path} path={route.path} element={route.component} />
         ))}
-      </RoutesNotFound> 
+      </RoutesNotFound>
     </BrowserRouter>
   );
 }
 
 export default App;
- 
+

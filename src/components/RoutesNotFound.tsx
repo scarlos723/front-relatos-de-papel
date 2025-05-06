@@ -6,7 +6,7 @@ const RoutesNotFound = (props: { children: React.ReactNode }) => {
   return (
     <Routes>
       {children}
-      <Route path="*" element={<NotFound />} />
+        <Route path="*" element={<NotFound />} />
     </Routes>
   );
 };

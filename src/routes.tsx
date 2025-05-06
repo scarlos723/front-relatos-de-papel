@@ -1,8 +1,8 @@
-import Home from "./pages/home";
+import { AccessPage } from "./pages/AccessPage";
 
 export const mainRoutes = [
   {
     path: "/",
-    component: <Home />
-  }
+    component: <AccessPage />,
+  },
 ];
