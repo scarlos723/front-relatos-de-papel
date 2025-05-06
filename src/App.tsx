@@ -6,14 +6,13 @@ function App() {
   return (
     <BrowserRouter>
       <RoutesNotFound>
-        async (params:type) => {
-          
-        }{mainRoutes.map((route) => (
+        {mainRoutes.map((route) => (
           <Route key={route.path} path={route.path} element={route.component} />
         ))}
-      </RoutesNotFound>
+      </RoutesNotFound> 
     </BrowserRouter>
   );
 }
 
 export default App;
+ 
