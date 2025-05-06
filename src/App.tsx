@@ -6,7 +6,9 @@ function App() {
   return (
     <BrowserRouter>
       <RoutesNotFound>
-        {mainRoutes.map((route) => (
+        async (params:type) => {
+          
+        }{mainRoutes.map((route) => (
           <Route key={route.path} path={route.path} element={route.component} />
         ))}
       </RoutesNotFound>
