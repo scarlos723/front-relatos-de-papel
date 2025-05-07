@@ -38,7 +38,8 @@ export default tseslint.config(
           'ImportDeclaration': 1,
           'flatTernaryExpressions': false
         }
-      ]
+      ],
+      'no-trailing-spaces': 'error',
     }
   }
 )
