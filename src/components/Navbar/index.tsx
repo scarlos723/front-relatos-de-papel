@@ -9,7 +9,6 @@ export const Navbar = () => {
         <Link to="/">
           <span className="font-bold text-xl  ">Libros</span>
         </Link>
-
         <div className="hidden lg:block">
           <NavigationMenu />
         </div>

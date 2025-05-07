@@ -26,6 +26,7 @@ const ButtonIcon = (props: { open: boolean; onClick: () => void }) => {
     </button>
   );
 };
+
 export const Mobile = () => {
   const [open, setOpen] = useState(false);
   return (

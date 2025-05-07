@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { Button } from "../Button";
-
 export const NavigationMenu = (props: {
   setOpen?: (value: boolean) => void;
 }) => {
