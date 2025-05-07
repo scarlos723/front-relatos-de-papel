@@ -14,9 +14,9 @@ function App() {
           path: "/",
           element: <AccessPage/>,
         },
-        { 
-          path: "/catalogo", 
-          element: <Catalog /> 
+        {
+          path: "/catalogo",
+          element: <Catalog />
         },
       ],
     },
