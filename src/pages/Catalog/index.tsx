@@ -4,55 +4,60 @@ import { Seo } from "../../components/Seo";
 const LIST_BOOKS = [
   {
     title: "El libro de la selva",
-    price: "$100.00",
+    price: 100.3,
     image: "https://picsum.photos/200/300",
-    type:"Fisico"
+    type: "Fisico",
   },
   {
     title: "El libro de la selva",
-    price: "$100.00",
+    price: 100.1,
     image: "https://picsum.photos/200/299",
-    type:"Dígital"
+    type: "Dígital",
   },
   {
     title: "Harry Potter",
-    price: "$100.00",
+    price: 100.0,
     image: "https://picsum.photos/200/303",
-    type:"Fisico"
+    type: "Fisico",
   },
   {
     title: "Habitaciones de la tierra",
-    price: "$100.00",
+    price: 100.0,
     image: "https://picsum.photos/200/301",
-    type:"Dígital"
+    type: "Dígital",
   },
   {
     title: "El libro de la selva",
-    price: "$100.00",
+    price: 100.0,
     image: "https://picsum.photos/200/310",
-    type:"Fisico"
+    type: "Fisico",
   },
   {
     title: "El libro de la selva",
-    price: "$100.00",
+    price: 100.99,
     image: "https://picsum.photos/200/220",
-    type:"Dígital"
+    type: "Dígital",
   },
   {
     title: "Harry Potter",
-    price: "$100.00",
+    price: 100.0,
     image: "https://picsum.photos/200/210",
-    type:"Fisico"
+    type: "Fisico",
+  },
+  {
+    title: "Otro libro",
+    price: 799.0,
+    image: "https://picsum.photos/199/201",
+    type: "Dígital",
   },
 ];
 export const Catalog = () => {
-
-  const[booksFiltered,setBooksFiltered]=useState(LIST_BOOKS)
+  const [booksFiltered, setBooksFiltered] = useState(LIST_BOOKS);
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.toLowerCase();
     const filteredBooks = LIST_BOOKS.filter((book) =>
-      book.title.toLowerCase().includes(value)
+      book.title.toLowerCase().includes(value),
     );
     setBooksFiltered(filteredBooks);
   };
