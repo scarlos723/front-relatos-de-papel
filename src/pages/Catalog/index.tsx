@@ -1,7 +1,16 @@
 export const Catalog = () => {
   return (
-    <div>
-      <h1>Catalogo</h1>
-    </div>
+    <section className="container">
+      <div className="flex">
+        <h1>Catálogo</h1>
+        <div>
+          <input
+            type="text"
+            placeholder="Buscar"
+            className="rounded-full border border-white"
+          />
+        </div>
+      </div>
+    </section>
   );
 };
