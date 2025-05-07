@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { Mobile } from "./Mobile";
-import { Nav } from "./Nav";
-
+import { NavigationMenu } from "./NavigationMenu";
 
 export const Navbar = () => {
   return (
@@ -12,9 +11,9 @@ export const Navbar = () => {
         </Link>
 
         <div className="hidden lg:block">
-          <Nav />
+          <NavigationMenu />
         </div>
-        <Mobile/>
+        <Mobile />
       </div>
     </header>
   );
