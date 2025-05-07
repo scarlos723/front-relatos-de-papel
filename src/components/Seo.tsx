@@ -1,7 +1,4 @@
-import { Helmet } from "react-helmet";
 import { useLocation } from "react-router-dom";
-// import { useLocation } from 'react-router-dom'
-
 
 interface SeoProps {
   title?: string;
@@ -9,9 +6,9 @@ interface SeoProps {
   keywords?: string[];
   imageUrl?: string;
 }
-
-export const Seo=({
-  title = "Relatos de papel",
+const default_title = "Relatos de papel";
+export const Seo = ({
+  title = default_title,
   description = `
   Relatos de papel es una plataforma de compra, lectura y 
   escritura de libros en línea. Con una amplia variedad 
@@ -20,20 +17,23 @@ export const Seo=({
   ¡Lee, escribe y comparte con nosotros!
   `,
   imageUrl,
-}: SeoProps)=> {
+}: SeoProps) => {
   const { pathname } = useLocation();
   const url = "https://www.relatosdepapel.com/";
 
   const seo = {
     title,
     description,
-    titleTemplate: "%s | Relatos de papel",
-    image: imageUrl ,
+    titleTemplate: `%s | ${default_title}`,
+    image: imageUrl,
     url: `${url}${pathname}`,
   };
-
+  const formattedtitle = title
+    ? seo.titleTemplate.replace("%s", title)
+    : default_title;
   return (
-    <Helmet title={seo.title} titleTemplate={seo.titleTemplate}>
+    <>
+      <title>{formattedtitle}</title>
       <meta name="description" content={seo.description} />
       <link rel="canonical" href={url} />
 
@@ -45,8 +45,6 @@ export const Seo=({
       <meta property="og:url" content={seo.url} />
       <meta property="og:image" content={seo.image} />
       <meta property="og:type" content="website" />
-
-
-    </Helmet>
+    </>
   );
-}
+};

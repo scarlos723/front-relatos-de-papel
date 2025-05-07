@@ -71,7 +71,7 @@ export const Catalog = () => {
             <input
               type="text"
               placeholder="Buscar libro"
-              className="py-1 outline-none w-[310px]"
+              className="py-1 outline-none w-[280px]"
               onChange={handleSearch}
             />
           </div>
