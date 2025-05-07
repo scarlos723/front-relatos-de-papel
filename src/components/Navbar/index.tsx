@@ -1,31 +1,21 @@
 import { Link } from "react-router-dom";
-import { Button } from "../Button";
+import { Mobile } from "./Mobile";
+import { Nav } from "./Nav";
+
 
 export const Navbar = () => {
   return (
-    <header className="container py-4 sticky top-0 flex items-center justify-between">
-      <Link to="/">
-        <span className="font-bold  text-xl">Libros</span>
-      </Link>
-      <nav>
-        <ul className="items-center gap-4 hidden lg:flex">
-          <li>
-            <Link to={"/catalogo"}>
-              <span className="underline font-semibold">Catálogo</span>
-            </Link>
-          </li>
-          <li>
-            <Button type="button" variant="primary">
-              Iniciar sesión
-            </Button>
-          </li>
-          <li>
-            <Button type="button" variant="secondary">
-              Registrarse
-            </Button>
-          </li>
-        </ul>
-      </nav>
+    <header className="backdrop-blur-lg py-4 sticky top-0 bg-black/10">
+      <div className="container flex justify-between  ">
+        <Link to="/">
+          <span className="font-bold text-xl  ">Libros</span>
+        </Link>
+
+        <div className="hidden lg:block">
+          <Nav />
+        </div>
+        <Mobile/>
+      </div>
     </header>
   );
 };

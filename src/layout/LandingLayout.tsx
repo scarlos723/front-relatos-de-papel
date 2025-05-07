@@ -4,7 +4,7 @@ const LandingLayout = () => {
   return (
     <>
       <Navbar />
-      {<Outlet />}
+      <Outlet />
     </>
   );
 };

@@ -1,26 +1,57 @@
-export const Button = (props: {
-  variant: "primary" | "secondary" | "danger";
+
+export interface ButtonProps {
+  variant?: "primary" | "secondary" | "danger";
   children: React.ReactNode;
   onClick?: () => void;
-  type: "button" | "submit" | "reset";
+  type?: "button" | "submit" | "reset";
   disabled?: boolean;
   asChild?: boolean;
-}) => {
-  const { variant, asChild, disabled, children, onClick, type } = props;
-  const buttonStyles = {
-    primary: "bg-gray-700 text-white hover:bg-opacity-50 disable:bg-gray-300",
-    secondary:
-      "bg-white border-white text-black rounde-md hover:bg-opacity-50 disabled:bg-gray-300",
-    danger: "bg-red-500 text-white hover:bg-opacity-50 disable:bg-red-300",
-  };
+  className?: string;
+  size?: "sm" | "md" | "lg";
+}
 
-  const buttonProps = { disabled, onClick, type };
+export const Button = ({
+  variant = "primary",
+  asChild = false,
+  disabled = false,
+  className = "",
+  children,
+  onClick,
+  type = "button",
+  size = "sm",
+}: ButtonProps) => {
+  const Component = asChild ? "span" : "button";
+  const cntr = (values: string[]) => {
+    return [...new Set(
+      values
+        .join(" ")
+        .split(" ")
+        .map((className) => className.trim())
+    )].join(" ");
+  };
+  const variants={
+    primary: "bg-gray-700 text-white hover:bg-gray-600 disabled:bg-gray-300",
+    secondary:
+      "bg-white border border-gray-300 text-black hover:bg-gray-100 disabled:bg-gray-300",
+    danger: "bg-red-500 text-white hover:bg-red-600 disabled:bg-red-300",
+
+  }
+  const sizes = {
+    sm: "text-sm px-2 py-1",
+    md: "text-base px-3 py-2",
+    lg: "text-lg  px-4 py-3",
+  }
+  const baseStyles ="px-2 py-1 cursor-pointer rounded-md font-semibold transition-colors"
   return (
-    <button
-      className={`px-4 py-2 rounded-md font-semibold ${!variant ? buttonStyles["primary"] : buttonStyles[variant]}`}
-      {...(asChild ? null : buttonProps)} // If asChild is true, don't spread buttonProps
+    <Component
+      className={cntr(
+        [ baseStyles,variants[variant], className, sizes[size]]
+      )}
+      onClick={onClick}
+      type={asChild ? undefined : type}
+      disabled={disabled}
     >
       {children}
-    </button>
+    </Component>
   );
 };
