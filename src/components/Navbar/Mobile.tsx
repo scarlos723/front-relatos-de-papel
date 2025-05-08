@@ -33,7 +33,7 @@ export const Mobile = () => {
     <div className="bg-blur lg:hidden">
       <ButtonIcon onClick={() => setOpen(!open)} open={open}></ButtonIcon>
       <div
-        className={`container py-4 absolute transition top-0 left-0 grid grid-rows-[2fr_12fr] w-full h-screen backdrop-blur-lg bg-gray-400 ${open ? "translate-y-0" : "-translate-y-full"}`}
+        className={`container py-4 absolute transition top-0 left-0 grid grid-rows-[2fr_12fr] w-full h-screen backdrop-blur-lg bg-gray-400 ${open ? "translate-y-0" : "-translate-y-full"} z-10`}
       >
         <div className="ml-auto mb-auto flex w-full items-center justify-between p-2">
           <Link
