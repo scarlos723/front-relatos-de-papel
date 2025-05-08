@@ -6,7 +6,7 @@ type TextStyle = {
   tailwind: string;
 };
 
-type  Variant = "primary" | "secondary" | "outline";
+type Variant = "primary" | "secondary" | "outline";
 export const UxUi = () => {
   const textStyles: TextStyle[] = [
     {
@@ -82,11 +82,7 @@ export const UxUi = () => {
     },
   ];
 
-  const button_variants:Variant[]= [
-    "primary",
-    "secondary",
-    "outline",
-  ];
+  const button_variants: Variant[] = ["primary", "secondary", "outline"];
   return (
     <main className="container py-10">
       <section>
@@ -94,12 +90,10 @@ export const UxUi = () => {
         <ul className="grid lg:grid-cols-2 gap-4">
           {textStyles.map((style) => (
             <li key={style.name} className="border-b border-gray-700 pb-2">
-
-              <div className={`${style.tailwind}`}>
-                {style.name}
-              </div>
+              <div className={`${style.tailwind}`}>{style.name}</div>
               <div className="text-xs text-gray-500 mt-1">
-              Size: {style.size}px Tailwind: <code className="text-green-400">{style.tailwind}</code>
+                Size: {style.size}px Tailwind:{" "}
+                <code className="text-green-400">{style.tailwind}</code>
               </div>
             </li>
           ))}
@@ -108,21 +102,19 @@ export const UxUi = () => {
       <section className="mt-10">
         <h2 className="text-5xl font-bold mb-10">Buttons</h2>
         <p className="mb-4">
-          <span className="font-bold">size prop:  </span> sm, md, lg
+          <span className="font-bold">size prop: </span> sm, md, lg
         </p>
         <div className="grid lg:grid-cols-2 gap-4">
-          {
-            button_variants.map((variant) => (
-              <div key={variant} className="border-b border-gray-700 pb-2">
-                <Button variant={variant} size="lg" className="w-full">
-                  {variant}
-                </Button>
-                <div className="text-xs text-gray-500 mt-1">
-                  <code className="text-green-400">{`<Button variant="${variant} size:"lg"> ...`}</code>
-                </div>
+          {button_variants.map((variant) => (
+            <div key={variant} className="border-b border-gray-700 pb-2">
+              <Button variant={variant} size="lg" className="w-full">
+                {variant}
+              </Button>
+              <div className="text-xs text-gray-500 mt-1">
+                <code className="text-green-400">{`<Button variant="${variant} size="lg"> ...`}</code>
               </div>
-            ))
-          }
+            </div>
+          ))}
         </div>
       </section>
     </main>
