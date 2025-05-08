@@ -1,6 +1,6 @@
 
 export interface ButtonProps {
-  variant?: "primary" | "secondary" | "danger";
+  variant?: "primary" | "secondary" | "outline";
   children: React.ReactNode;
   onClick?: () => void;
   type?: "button" | "submit" | "reset";
@@ -33,7 +33,7 @@ export const Button = ({
     primary: "bg-gray-700 text-white hover:bg-gray-600 disabled:bg-gray-300",
     secondary:
       "bg-white border border-gray-300 text-black hover:bg-gray-100 disabled:bg-gray-300",
-    danger: "bg-red-500 text-white hover:bg-red-600 disabled:bg-red-300",
+    outline:"border border-gray-300 text-white hover:bg-gray-100 hover:text-black disabled:bg-gray-300",
 
   }
   const sizes = {
