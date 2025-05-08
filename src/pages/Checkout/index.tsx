@@ -42,7 +42,7 @@ export const Checkout = () => {
             {PRODUCTS.map((product, index) => (
               <li key={index} className="flex gap-4">
                 <span className="w-5">{index + 1}.</span>
-                <span className="line-clamp-1 w-24">{product.title}</span>
+                <span className="line-clamp-1 flex-1">{product.title}</span>
                 <span>-</span>
                 <span>${product.price.toFixed(2)}</span>
               </li>
