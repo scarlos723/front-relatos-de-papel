@@ -4,6 +4,7 @@ import LandingLayout from "./layout/LandingLayout";
 import { AccessPage } from "./pages/AccessPage";
 import { Catalog } from "./pages/Catalog";
 import { Checkout } from "./pages/Checkout";
+import { UxUi } from "./pages/UXUI";
 
 function App() {
   const element = useRoutes([
@@ -21,7 +22,10 @@ function App() {
         {
           path: "/pagar",
           element: <Checkout />,
-        },
+        },{
+          path: "/uxui",
+          element: <UxUi />,
+        }
       ],
     },
     {
