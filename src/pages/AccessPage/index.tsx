@@ -1,13 +1,16 @@
-import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
 import backgroundImage from "../../assets/images/library.jpg";
 import { Button } from "../../components/Button";
+import { ROUTES } from "../../constants/routes";
+
 export const AccessPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      navigate("/catalogo");
+      navigate(ROUTES.CATALOG);
     }, 5000);
     return () => clearTimeout(timer);
   }, []);
@@ -30,10 +33,10 @@ export const AccessPage = () => {
           vida.
         </p>
         <div className="flex justify-center gap-4">
-          <Button type="button" onClick={() => handleButtonRoute("/register")} variant="primary" className="px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition cursor-pointer">
+          <Button type="button" onClick={() => handleButtonRoute(ROUTES.REGISTER)} variant="primary" className="px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition cursor-pointer">
             Registrarse
           </Button>
-          <Button type="button" onClick={() => handleButtonRoute("/catalogo")} variant="primary" className="px-6 py-3 bg-black text-white rounded-lg hover:bg-gray-600 transition cursor-pointer">
+          <Button type="button" onClick={() => handleButtonRoute(ROUTES.CATALOG)} variant="primary" className="px-6 py-3 bg-black text-white rounded-lg hover:bg-gray-600 transition cursor-pointer">
             Ver Catálogo
           </Button>
         </div>

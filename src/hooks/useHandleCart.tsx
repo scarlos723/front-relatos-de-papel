@@ -1,4 +1,5 @@
-import useCartStore from '../store/cart';
+import { useCartStore } from '../store/cart';
+import type { Cart } from '../store/cart/types';
 
 export const useHandleCart = () => {
   const addItem = useCartStore((state) => state.addItem);
@@ -6,7 +7,7 @@ export const useHandleCart = () => {
   const clearCart = useCartStore((state) => state.clearCart);
   const items = useCartStore((state) => state.items);
 
-  const handleAddItem = (item: { id: number; title: string; price: number; image: string; type: string; quantity: number }) => {
+  const handleAddItem = (item: Cart) => {
     addItem(item);
   }
   const handleRemoveItem = (id: number) => {

@@ -2,10 +2,7 @@
 
 @layer base {
   .container {
-    @apply px-10 md:px-20;
-    margin-left: auto;
-    margin-right: auto;
-    /* Centra el contenedor automáticamente */
+    @apply px-16 md:px-20 min-w-full max-w-full w-full;
   }
 }
 @layer utilities {
@@ -56,5 +53,4 @@ body {
     color: #213547;
     background-color: #ffffff;
   }
-
 }

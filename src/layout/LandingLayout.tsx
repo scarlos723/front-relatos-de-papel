@@ -1,6 +1,8 @@
 import { Outlet } from "react-router-dom";
+
 import { Navbar } from "../components/Navbar";
-const LandingLayout = () => {
+
+export const LandingLayout = () => {
   return (
     <>
       <Navbar />
@@ -8,5 +10,3 @@ const LandingLayout = () => {
     </>
   );
 };
-
-export default LandingLayout;

@@ -40,6 +40,7 @@ export default tseslint.config(
         }
       ],
       'no-trailing-spaces': 'error',
+      'react-hooks/exhaustive-deps': 'off'
     }
   }
 )

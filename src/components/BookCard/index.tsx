@@ -1,13 +1,9 @@
 import { FaCartPlus } from "react-icons/fa";
-import { useHandleCart } from "../hooks/useHandleCart";
 
-export const BookCard = (props: {
-  id: number;
-  title: string;
-  price: number;
-  image: string;
-  type: string;
-}) => {
+import { useHandleCart } from "../../hooks/useHandleCart";
+import type { BookCardProps } from "./types";
+
+export const BookCard = (props: BookCardProps) => {
   const {handleAddItem} = useHandleCart()
 
   const handleAddToCart = () => {
@@ -21,7 +17,6 @@ export const BookCard = (props: {
     };
     handleAddItem(item);
   }
-
 
   return (
     <article className="border  border-gray-400 rounded-lg w-[310px] md:w-[280px] lg:w-[200px]  borderbox p-4 grid gap-4">

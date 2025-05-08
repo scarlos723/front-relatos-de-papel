@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { NavigationMenu } from "./NavigationMenu";
 
-const ButtonIcon = (props: { open: boolean; onClick: () => void }) => {
+import { NavigationMenu } from "../NavigationMenu";
+import type { ButtonIconProps } from "./types";
+
+const ButtonIcon = (props: ButtonIconProps) => {
   return (
     <button onClick={props.onClick}>
       {props.open ? (

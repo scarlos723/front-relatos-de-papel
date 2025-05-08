@@ -1,28 +1,9 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
-interface CartState {
-  items: {
-    id: number;
-    title: string;
-    price: number;
-    image: string;
-    type: string;
-    quantity: number;
-  }[];
-  addItem: (item: {
-    id: number;
-    title: string;
-    price: number;
-    image: string;
-    type: string;
-    quantity: number;
-  }) => void;
-  removeItem: (id: number) => void;
-  clearCart: () => void;
-}
+import type { CartState } from "./types";
 
-const useCartStore = create<CartState>()(
+export const useCartStore = create<CartState>()(
   persist(
     (set) => ({
       items: [],
@@ -63,5 +44,3 @@ const useCartStore = create<CartState>()(
     }
   )
 );
-
-export default useCartStore;

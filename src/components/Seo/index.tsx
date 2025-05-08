@@ -1,14 +1,10 @@
 import { useLocation } from "react-router-dom";
 
-interface SeoProps {
-  title?: string;
-  description?: string;
-  keywords?: string[];
-  imageUrl?: string;
-}
-const default_title = "Relatos de papel";
+import { DEFAULT_TITLE, URL } from "../../constants/seo";
+import type { SeoProps } from "./types";
+
 export const Seo = ({
-  title = default_title,
+  title = DEFAULT_TITLE,
   description = `
   Relatos de papel es una plataforma de compra, lectura y 
   escritura de libros en línea. Con una amplia variedad 
@@ -19,23 +15,22 @@ export const Seo = ({
   imageUrl,
 }: SeoProps) => {
   const { pathname } = useLocation();
-  const url = "https://www.relatosdepapel.com/";
 
   const seo = {
     title,
     description,
-    titleTemplate: `%s | ${default_title}`,
+    titleTemplate: `%s | ${DEFAULT_TITLE}`,
     image: imageUrl,
-    url: `${url}${pathname}`,
+    url: `${URL}${pathname}`,
   };
   const formattedtitle = title
     ? seo.titleTemplate.replace("%s", title)
-    : default_title;
+    : DEFAULT_TITLE;
   return (
     <>
       <title>{formattedtitle}</title>
       <meta name="description" content={seo.description} />
-      <link rel="canonical" href={url} />
+      <link rel="canonical" href={URL} />
 
       {/* OpenGraph tags */}
       <meta property="og:title" content={seo.title} />
