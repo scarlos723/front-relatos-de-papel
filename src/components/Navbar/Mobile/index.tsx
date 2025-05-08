@@ -1,6 +1,6 @@
 import { useState } from "react";
+import { IoLibraryOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
-
 import { NavigationMenu } from "../NavigationMenu";
 import type { ButtonIconProps } from "./types";
 
@@ -43,7 +43,7 @@ export const Mobile = () => {
             onClick={() => setOpen(!open)}
             className="font-bold text-xl"
           >
-            Libros
+            <IoLibraryOutline className="inline-block text-2xl mr-1" />
           </Link>
           <ButtonIcon onClick={() => setOpen(!open)} open={open}></ButtonIcon>
         </div>
