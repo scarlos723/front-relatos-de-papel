@@ -1,14 +1,4 @@
-
-export interface ButtonProps {
-  variant?: "primary" | "secondary" | "outline";
-  children: React.ReactNode;
-  onClick?: () => void;
-  type?: "button" | "submit" | "reset";
-  disabled?: boolean;
-  asChild?: boolean;
-  className?: string;
-  size?: "sm" | "md" | "lg";
-}
+import type { ButtonProps } from "./types";
 
 export const Button = ({
   variant = "primary",

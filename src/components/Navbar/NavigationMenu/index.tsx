@@ -1,34 +1,34 @@
-import { Link } from "react-router-dom";
-import { Button } from "../Button";
-import { FaShoppingCart } from "react-icons/fa";
-import { useHandleCart } from "../../hooks/useHandleCart";
 import { useState } from "react";
-import { Cart } from "./Cart";
-import { MouseEvent } from "react";
-export const NavigationMenu = (props: {
-  setOpen?: (value: boolean) => void;
-}) => {
+import type { MouseEvent } from "react";
+import { Link } from "react-router-dom";
+import { FaShoppingCart } from "react-icons/fa";
+
+import { Button } from "../../Button";
+import { useHandleCart } from "../../../hooks/useHandleCart";
+import { Cart } from "../Cart";
+import { ROUTES } from "../../../constants/routes";
+import type { NavigationMenuProps } from "./types";
+
+export const NavigationMenu = (props: NavigationMenuProps) => {
+  const { getCartItems, handleRemoveItem } = useHandleCart();
+  const [openCart, setOpenCart] = useState(false);
+
   const onClickLink = () => {
     if (props.setOpen) {
       props.setOpen(false);
     }
   };
 
-  const { getCartItems, handleRemoveItem } = useHandleCart();
-
-
-
-  const [openCart, setOpenCart] = useState(false);
-
   const handleOpenCart = (event: MouseEvent) => {
     event?.stopPropagation();
     event.preventDefault();
     setOpenCart(!openCart);
   };
+
   return (
     <nav className={`items-center gap-4 grid lg:flex `}>
       <Link
-        to={"/catalogo"}
+        to={ROUTES.CATALOG}
         className="flex items-center gap-4 w-full lg:w-auto  mb-auto"
         onClick={onClickLink}
       >
@@ -65,12 +65,16 @@ export const NavigationMenu = (props: {
         </button>
       </Link>
       <div className="flex justify-between mt-auto lg:mt-0 gap-4 lg:w-[310px]">
-        <Button type="button" variant="primary" className="w-full">
-          Iniciar sesión
-        </Button>
-        <Button type="button" variant="secondary" className="w-full">
-          Registrarse
-        </Button>
+        <Link to={ROUTES.LOGIN} className="w-full">
+          <Button type="button" variant="primary" className="w-full">
+            Iniciar sesión
+          </Button>
+        </Link>
+        <Link to={ROUTES.REGISTER} className="w-full">
+          <Button type="button" variant="secondary" className="w-full">
+            Registrarse
+          </Button>
+        </Link>
       </div>
     </nav>
   );

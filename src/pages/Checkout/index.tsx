@@ -1,29 +1,9 @@
 import { useState } from "react";
+
 import { Button } from "../../components/Button";
 import { Seo } from "../../components/Seo";
-const PRODUCTS = [
-  {
-    title: "Producto 1",
-    price: 10.00,
-  },
-  {
-    title: "Producto 2",
-    price: 20.00,
-  },
-  {
-    title: "Producto 3",
-    price:30.00,
-  },
-  {
-    title: "Producto 4",
-    price: 40.00,
-  },
-  {
-    title: "Producto 5",
-    price: 50.00,
-  },
-];
-
+import { PRODUCTS } from "../../constants/mocks";
+import { Input } from "../../components/Input";
 
 export const Checkout = () => {
   const [paymentMethod, setPaymentMethod] = useState("paypal");
@@ -41,7 +21,7 @@ export const Checkout = () => {
     <main className="container">
       <Seo
         title="Detalles de pago"
-      ></Seo>
+      />
       <h1 className="text-2xl font-bold mb-4">
         Comprar
       </h1>
@@ -69,78 +49,12 @@ export const Checkout = () => {
         <section className="lg:order-1">
           <h2 className="text-xl font-semibold mb-2">Datos de Envío</h2>
           <div className="grid gap-4">
-            <div>
-              <label htmlFor="name" className="block text-sm font-medium">
-                Nombre Completo
-              </label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                required
-                className="w-full border border-gray-300 rounded-md p-2"
-              />
-            </div>
-            <div>
-              <label htmlFor="phone" className="block text-sm font-medium">
-                Teléfono
-              </label>
-              <input
-                type="tel"
-                id="phone"
-                name="phone"
-                required
-                className="w-full border border-gray-300 rounded-md p-2"
-              />
-            </div>
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium">
-                Correo Electrónico
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                required
-                className="w-full border border-gray-300 rounded-md p-2"
-              />
-            </div>
-            <div>
-              <label htmlFor="phone" className="block text-sm font-medium">
-                Pais
-              </label>
-              <input
-                type="text"
-                id="contry"
-                name="contry"
-                required
-                className="w-full border border-gray-300 rounded-md p-2"
-              />
-            </div>
-            <div>
-              <label htmlFor="phone" className="block text-sm font-medium">
-                Ciudad
-              </label>
-              <input
-                type="text"
-                id="city"
-                name="city"
-                required
-                className="w-full border border-gray-300 rounded-md p-2"
-              />
-            </div>
-            <div>
-              <label htmlFor="address" className="block text-sm font-medium">
-                Dirección
-              </label>
-              <input
-                type="text"
-                id="address"
-                name="address"
-                required
-                className="w-full border border-gray-300 rounded-md p-2"
-              />
-            </div>
+            <Input id="name" label="Nombre Completo" type="text" />
+            <Input id="phone" label="Teléfono" type="tel" />
+            <Input id="email" label="Correo Electrónico" type="email" />
+            <Input id="contry" label="Pais" type="text" />
+            <Input id="city" label="Ciudad" type="text" />
+            <Input id="address" label="Dirección" type="text" />
             <div>
               <h2 className="text-xl font-semibold mb-2">Método de Pago</h2>
               <div className="space-y-2 flex gap-4">

@@ -1,23 +1,16 @@
-import { FaRegTrashAlt } from "react-icons/fa";
-import { Button } from "../Button";
 import { MouseEvent } from "react";
+import { FaRegTrashAlt } from "react-icons/fa";
 
-export const Cart = (props: {
-  items: {
-    id: number;
-    title: string;
-    price: number;
-    image: string;
-    type: string;
-    quantity:number
-  }[];
-  handleRemoveItem: (id: number) => void;
-}) => {
+import { Button } from "../../Button";
+import type { CartProps } from "./types";
+
+export const Cart = (props: CartProps) => {
   const onRemoveItem = (id: number, event: MouseEvent) => {
     event.stopPropagation();
     event.preventDefault();
     props.handleRemoveItem(id);
   };
+
   return (
     <div className="bg-white w-[300px] h-[400px] rounded-lg shadow-lg p-4">
       <h2 className="text-black text-lg font-semibold">Carrito de Compras</h2>
