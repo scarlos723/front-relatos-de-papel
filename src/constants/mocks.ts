@@ -55,27 +55,63 @@ export const LIST_BOOKS = [
     image: "https://picsum.photos/199/201",
     type: "Dígital",
   },
+  {
+    id: 9,
+    title: "Habitaciones de la tierra",
+    price: 100.0,
+    image: "https://picsum.photos/200/301",
+    type: "Dígital",
+  },
+  {
+    id: 10,
+    title: "El libro de la selva",
+    price: 100.0,
+    image: "https://picsum.photos/200/310",
+    type: "Fisico",
+  },
+  {
+    id: 11,
+    title: "El libro de la selva",
+    price: 100.99,
+    image: "https://picsum.photos/200/220",
+    type: "Dígital",
+  },
+  {
+    id: 12,
+    title: "Harry Potter",
+    price: 100.0,
+    image: "https://picsum.photos/200/210",
+    type: "Fisico",
+  },
+  {
+    id: 13,
+    title: "Otro libro",
+    price: 799.0,
+    image: "https://picsum.photos/199/201",
+    type: "Dígital",
+  },
 ];
 
 export const PRODUCTS = [
   {
     title: "Producto 1",
-    price: 10.00,
+    price: 10.0,
   },
   {
     title: "Producto 2",
-    price: 20.00,
+    price: 20.0,
   },
   {
     title: "Producto 3",
-    price:30.00,
+    price: 30.0,
   },
   {
     title: "Producto 4",
-    price: 40.00,
+    price: 40.0,
   },
   {
     title: "Producto 5",
-    price: 50.00,
+    price: 50.0,
   },
 ];
+

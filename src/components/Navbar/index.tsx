@@ -1,9 +1,9 @@
-import { Link } from "react-router-dom";
 import { IoLibraryOutline } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
+import { ROUTES } from "../../constants/routes";
 import { Mobile } from "./Mobile";
 import { NavigationMenu } from "./NavigationMenu";
-import { ROUTES } from "../../constants/routes";
 
 export const Navbar = () => {
   return (
@@ -12,7 +12,6 @@ export const Navbar = () => {
         <Link to={ROUTES.HOME}>
           <span className="flex font-bold text-xl items-center ">
             <IoLibraryOutline className="inline-block text-2xl mr-1" />
-            Libros
           </span>
         </Link>
         <div className="hidden lg:block">

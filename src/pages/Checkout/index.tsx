@@ -1,9 +1,9 @@
 import { useState } from "react";
 
 import { Button } from "../../components/Button";
+import { Input } from "../../components/Input";
 import { Seo } from "../../components/Seo";
 import { PRODUCTS } from "../../constants/mocks";
-import { Input } from "../../components/Input";
 
 export const Checkout = () => {
   const [paymentMethod, setPaymentMethod] = useState("paypal");
@@ -18,36 +18,38 @@ export const Checkout = () => {
   };
 
   return (
-    <main className="container">
-      <Seo
-        title="Detalles de pago"
-      />
-      <h1 className="text-2xl font-bold mb-4">
-        Comprar
-      </h1>
-      <form onSubmit={handleSubmit} className="space-y-6 lg:grid lg:grid-cols-[2fr_1fr] gap-4">
-        <section className="border border-white rounded-md p-4 lg:order-2">
-          <h2 className="text-xl font-semibold mb-2 text-center">Resumen</h2>
-          <div className="grid place-content-center text-center text-2xl font-bold mt-4">
-
-            <span>${
-              PRODUCTS.reduce((total, product) => total + product.price, 0).toFixed(2)
-            }
-            </span>
+    <main className="container py-16">
+      <Seo title="Detalles de pago" />
+      <h1 className="text-5xl font-bold mb-12">Comprar</h1>
+      <form
+        onSubmit={handleSubmit}
+        className="space-y-6 lg:grid lg:grid-cols-[2fr_1fr] gap-4"
+      >
+        <section className="border border-white rounded-md p-4 lg:order-2 flex flex-col gap-6">
+          <h2 className="text-2xl font-bold text-center">Resumen</h2>
+          <div className="grid place-content-center text-center font-bold">
+            <div className="flex">
+              <span className="text-2xl">$</span>
+              <span className="text-5xl">
+                {PRODUCTS.reduce(
+                  (total, product) => total + product.price,
+                  0,
+                ).toFixed(2)}
+              </span>
+            </div>
           </div>
           <ul className="space-y-2">
             {PRODUCTS.map((product, index) => (
-              <li key={index} className="flex justify-between gap-4">
-                <span className="line-clamp-1">{product.title}</span>
+              <li key={index} className="flex gap-4">
+                <span className="w-5">{index + 1}.</span>
+                <span className="line-clamp-1 flex-1">{product.title}</span>
                 <span>-</span>
                 <span>${product.price.toFixed(2)}</span>
               </li>
             ))}
           </ul>
-
         </section>
         <section className="lg:order-1">
-          <h2 className="text-xl font-semibold mb-2">Datos de Envío</h2>
           <div className="grid gap-4">
             <Input id="name" label="Nombre Completo" type="text" />
             <Input id="phone" label="Teléfono" type="tel" />
@@ -86,26 +88,15 @@ export const Checkout = () => {
                 </div>
               </div>
             </div>
-            <div className="mt-auto"> <Button
-              type="submit"
-              variant="primary"
-              className="w-full"
-              size="lg"
-            >
-          Pagar
-            </Button></div>
+            <div className="flex justify-center">
+              <Button type="submit" variant="primary" className="" size="lg">
+                Pagar
+              </Button>
+            </div>
           </div>
         </section>
-
-        {/* Ítems a comprar */}
-
-
-        {/* Selector de tipo de pago */}
-
-
-        {/* Botón de pagar */}
-
       </form>
     </main>
   );
 };
+
