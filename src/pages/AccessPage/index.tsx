@@ -4,19 +4,16 @@ import backgroundImage from "../../assets/images/library.jpg";
 export const AccessPage = () => {
   const navigate = useNavigate();
 
-  /* useEffect(() => {
+  useEffect(() => {
     const timer = setTimeout(() => {
       navigate("/catalogo");
     }, 5000);
     return () => clearTimeout(timer);
-  }, []); */
+  }, []);
 
-  const handleRegisterBtn = () => {
-    navigate("/register");
+  const handleButtonRoute = (route: string) => {
+    navigate(route);
   }
-  const handleCatalogBtn = () => {
-    navigate("/catalogo");
-  };
 
   return (
     <div className="relative w-full flex items-center justify-center h-screen text-white ">
@@ -32,10 +29,10 @@ export const AccessPage = () => {
           vida.
         </p>
         <div className="flex justify-center gap-4">
-          <button onClick={handleRegisterBtn} className="px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition cursor-pointer">
+          <button onClick={() => handleButtonRoute("/register")} className="px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition cursor-pointer">
             Registrarse
           </button>
-          <button onClick={handleCatalogBtn} className="px-6 py-3 bg-black text-white rounded-lg hover:bg-gray-600 transition cursor-pointer">
+          <button onClick={() => handleButtonRoute("/catalogo")} className="px-6 py-3 bg-black text-white rounded-lg hover:bg-gray-600 transition cursor-pointer">
             Ver Catálogo
           </button>
         </div>
