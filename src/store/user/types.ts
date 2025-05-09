@@ -1,7 +1,7 @@
 interface User {
   id: number;
   email: string;
-  role: string;
+  role: 'User' | 'Admin';
 }
 
 export interface UserState {
