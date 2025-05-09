@@ -1,12 +1,14 @@
 import { FaCartPlus } from "react-icons/fa";
 
-import { useHandleCart } from "../../hooks/useHandleCart";
+import { useHandleCart } from "../../hooks/useHandleCart/useHandleCart";
 import type { BookCardProps } from "./types";
+import { MouseEvent } from "react";
 
 export const BookCard = (props: BookCardProps) => {
   const {handleAddItem} = useHandleCart()
 
-  const handleAddToCart = () => {
+  const handleAddToCart = (event: MouseEvent) => {
+    event.stopPropagation();
     const item = {
       id: props.id,
       title: props.title,
@@ -30,7 +32,7 @@ export const BookCard = (props: BookCardProps) => {
         <p className="font-bold">$ {props.price.toFixed(2)} </p>
         <div className="flex items-center justify-between mt-2">
           <small>{props.type}</small>
-          <FaCartPlus onClick={() => handleAddToCart()} className="text-[1.2rem] text-white cursor-pointer hover:text-gray-400 transition-all duration-300" />
+          <FaCartPlus onClick={(event) => handleAddToCart(event)} className="text-[1.2rem] text-white cursor-pointer hover:text-gray-400 transition-all duration-300" />
         </div>
       </div>
     </article>

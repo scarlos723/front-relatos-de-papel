@@ -35,7 +35,7 @@ export const Button = ({
   return (
     <Component
       className={cntr(
-        [ baseStyles,variants[variant], className, sizes[size]]
+        [ baseStyles,variants[variant], sizes[size], className]
       )}
       onClick={onClick}
       type={asChild ? undefined : type}

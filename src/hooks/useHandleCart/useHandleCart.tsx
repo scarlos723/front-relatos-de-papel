@@ -1,5 +1,5 @@
-import { useCartStore } from '../store/cart';
-import type { Cart } from '../store/cart/types';
+import { useCartStore } from '../../store/cart';
+import type { Cart } from '../../store/cart/types';
 
 export const useHandleCart = () => {
   const addItem = useCartStore((state) => state.addItem);
