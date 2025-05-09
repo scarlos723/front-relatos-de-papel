@@ -41,12 +41,12 @@ export const NavigationMenu = (props: NavigationMenuProps) => {
         <div className="flex justify-between mt-auto lg:mt-0 gap-4 w-[310px]">
           <Link to={ROUTES.LOGIN} className="w-full">
             <Button type="button" variant="primary" className="w-full">
-            Iniciar sesión
+              Iniciar sesión
             </Button>
           </Link>
           <Link to={ROUTES.REGISTER} className="w-full">
             <Button type="button" variant="secondary" className="w-full">
-            Registrarse
+              Registrarse
             </Button>
           </Link>
         </div>

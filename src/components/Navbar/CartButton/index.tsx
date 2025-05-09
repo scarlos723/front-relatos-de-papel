@@ -19,8 +19,12 @@ export const CartButton = () => {
     setOpenCart(!openCart);
   };
 
+  const handleCloseCart = () => {
+    setOpenCart(false);
+  };
+
   return (
-    <div className="relative">
+    <div className="static lg:relative">
       <button
         type="button"
         className={`radius-full ${
@@ -42,16 +46,13 @@ export const CartButton = () => {
         )}
       </button>
       {openCart && (
-        <div
+        <Cart
           ref={referencia}
-          className="absolute top-0 right-0 mt-12 mr-4 z-20"
-        >
-          <Cart
-            items={getCartItems()}
-            handleRemoveItem={handleRemoveItem}
-            handleClearCart={handleClearCart}
-          />
-        </div>
+          items={getCartItems()}
+          handleRemoveItem={handleRemoveItem}
+          handleClearCart={handleClearCart}
+          handleCloseCart={handleCloseCart}
+        />
       )}
     </div>
   )
