@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import type { ChangeEvent, FormEvent } from 'react'
 import { useNavigate } from 'react-router-dom'
 
@@ -17,12 +17,8 @@ export const Login = () => {
 
   const [values, setValues] = useState<LoginFormValues>(formValues)
   const [error, setError] = useState<LoginFormValues>(formValues)
-  const { setTokens } = useUserStore()
+  const { setUser, setTokens } = useUserStore()
   const navigate = useNavigate()
-
-  useEffect(() => {
-    validateForm()
-  }, [values])
 
   const onChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target
@@ -42,14 +38,21 @@ export const Login = () => {
     if(password.length === 0) newError.password = 'La contraseña es requerida'
 
     setError(newError)
+
+    return Object.values(newError).some((err) => err !== '')
   }
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    if(Object.values(error).some((err) => err !== '')) return
+    if(validateForm()) return
 
     // TODO: Llamar API
     console.log('Form data:', values)
+    setUser({
+      id: 1,
+      email: values.email,
+      role: 'User',
+    })
     setTokens('accessToken', 'refreshToken')
     // ------
 
