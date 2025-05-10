@@ -57,12 +57,10 @@ export const Checkout = () => {
           <ul className="space-y-2 max-h-[300px] overflow-y-auto">
             {items.map((product, index) => (
               <li key={index} className="flex gap-4">
-                <article className="grid grid-cols-[50px_1fr] gap-4 p-2 rounded-md  w-full">
+                <article className="grid grid-cols-[48px_1fr] gap-4 p-2 rounded-md  w-full">
                   <div>
                     <img
-                      className="objet-cover w-[40px] rounded-md"
-                      width={50}
-                      height={50}
+                      className="object-cover w-[48px] aspect-square rounded-md"
                       src={product.image}
                       alt=""
                     />
