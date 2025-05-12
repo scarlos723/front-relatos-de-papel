@@ -4,9 +4,10 @@ import { BookCard } from "../../components/BookCard";
 import { SearchIcon } from "../../components/SearchIcon";
 import { Seo } from "../../components/Seo";
 import { LIST_BOOKS } from "../../constants/mocks";
+import type { Books } from "../../types";
 
 export const Catalog = () => {
-  const [booksFiltered, setBooksFiltered] = useState(LIST_BOOKS);
+  const [booksFiltered, setBooksFiltered] = useState<Books>(LIST_BOOKS);
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.toLowerCase();

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import backgroundImage from "../../assets/images/library.jpg";
 import { Button } from "../../components/Button";
-import { ROUTES } from "../../constants/routes";
+import { ROUTES } from "../../routes";
 
 export const AccessPage = () => {
   const navigate = useNavigate();
