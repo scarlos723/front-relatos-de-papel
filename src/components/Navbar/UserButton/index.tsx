@@ -4,13 +4,13 @@ import type { MouseEvent } from "react";
 import { useState } from "react";
 import { useClickOutside } from "../../../hooks/useClickOutside/useClickOutside";
 import { useUserStore } from "../../../store/user";
-import { Button } from "../../Button";
+import { User } from "../User";
 
 export const UserButton = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const { user, logout } = useUserStore()
+  const { logout } = useUserStore()
 
-  const {referencia} = useClickOutside({
+  const { referencia } = useClickOutside({
     handleAction: () => setIsOpen(false),
   });
 
@@ -19,8 +19,17 @@ export const UserButton = () => {
     setIsOpen(!isOpen);
   };
 
+  const handleClose = () => {
+    setIsOpen(false);
+  };
+
+  const handleLogout = () => {
+    logout();
+    setIsOpen(false);
+  };
+
   return (
-    <div className="relative text-center">
+    <div className="static lg:relative text-center">
       <button
         type="button"
         className={`radius-full ${
@@ -37,35 +46,7 @@ export const UserButton = () => {
         />
       </button>
       {isOpen && (
-        <div
-          ref={referencia}
-          className="lg:absolute bottom-0 lg:top-0 right-0 mt-12 z-20"
-        >
-          <ul>
-            <li className="bg-white shadow-lg rounded-lg p-4 w-[300px]">
-              <h2 className="text-black font-semibold text-xl text-center">
-                Mi cuenta
-              </h2>
-              <div className="flex flex-col mt-2 overflow-auto h-[250px] pr-4">
-                <p className="text-gray-600 text-base text-center">
-                  {user?.role}
-                </p>
-                <p className="text-gray-600 text-base text-center">
-                  {user?.email}
-                </p>
-                <Button
-                  className="text-gray-600 text-base text-center mt-auto cursor-pointer"
-                  onClick={() => {
-                    logout();
-                    setIsOpen(false);
-                  }}
-                >
-                  Cerrar sesión
-                </Button>
-              </div>
-            </li>
-          </ul>
-        </div>
+        <User ref={referencia} handleLogout={handleLogout} handleClose={handleClose}/>
       )}
     </div>
   )
