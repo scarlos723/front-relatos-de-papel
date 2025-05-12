@@ -1,14 +1,13 @@
-import { FaRegTrashAlt } from "react-icons/fa";
 import { MdTransitEnterexit } from "react-icons/md";
 
+import { TrashIcon } from "@/components/TrashIcon";
+import { MouseEvent } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "../../Button";
 import type { CartProps } from "./types";
-import { useNavigate } from "react-router-dom";
-import { MouseEvent } from "react";
-
 export const Cart = (props: CartProps) => {
   const navigate = useNavigate();
-  const onRemoveItem = (id: number, event:MouseEvent) => {
+  const onRemoveItem = (id: number, event: MouseEvent) => {
     event.stopPropagation();
     props.handleRemoveItem(id);
   };
@@ -70,7 +69,7 @@ export const Cart = (props: CartProps) => {
                   onClick={(event) => onRemoveItem(item.id, event)}
                   className="text-red-500 cursor-pointer"
                 >
-                  <FaRegTrashAlt />
+                  <TrashIcon />
                 </button>
               </div>
             ))
