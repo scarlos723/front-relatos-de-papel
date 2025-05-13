@@ -1,7 +1,5 @@
-export interface BookCardProps {
+import type { Book } from "../../types";
+
+export interface BookCardProps extends Book {
   id: number;
-  title: string;
-  price: number;
-  image: string;
-  type: string;
 }

@@ -1,7 +1,7 @@
 import { IoLibraryOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
 
-import { ROUTES } from "../../constants/routes";
+import { ROUTES } from "../../routes";
 import { Mobile } from "./Mobile";
 import { Desktop } from "./Desktop";
 import { CartButton } from "./CartButton";

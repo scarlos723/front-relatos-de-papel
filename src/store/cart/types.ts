@@ -1,15 +1,8 @@
-export interface Cart {
-  id: number;
-  title: string;
-  price: number;
-  image: string;
-  type: string;
-  quantity: number;
-}
 
+import type { Book } from '../../types';
 export interface CartState {
-  items: Cart[];
-  addItem: (item: Cart) => void;
+  items: Book[];
+  addItem: (item: Book) => void;
   removeItem: (id: number) => void;
   clearCart: () => void;
 }

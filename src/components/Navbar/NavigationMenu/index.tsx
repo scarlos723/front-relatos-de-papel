@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 import { Button } from "../../Button";
-import { ROUTES } from "../../../constants/routes";
+import { ROUTES } from "../../../routes";
 import type { NavigationMenuProps } from "./types";
 import { useUserStore } from "../../../store/user";
 import { UserButton } from "../UserButton";

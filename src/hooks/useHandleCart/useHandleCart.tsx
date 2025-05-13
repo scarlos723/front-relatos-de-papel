@@ -1,5 +1,5 @@
 import { useCartStore } from '../../store/cart';
-import type { Cart } from '../../store/cart/types';
+import type { Book } from '../../types';
 
 export const useHandleCart = () => {
   const addItem = useCartStore((state) => state.addItem);
@@ -7,7 +7,7 @@ export const useHandleCart = () => {
   const clearCart = useCartStore((state) => state.clearCart);
   const items = useCartStore((state) => state.items);
 
-  const handleAddItem = (item: Cart) => {
+  const handleAddItem = (item: Book) => {
     addItem(item);
   }
   const handleRemoveItem = (id: number) => {
@@ -25,7 +25,10 @@ export const useHandleCart = () => {
         price: item.price,
         image: item.image,
         type: item.type,
-        quantity: item.quantity
+        author: item.author,
+        description: item.description,
+        quantity: item.quantity,
+        reviews: item.reviews
       };
     });
   }

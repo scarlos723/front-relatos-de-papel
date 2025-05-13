@@ -1,10 +1,11 @@
-import { MdTransitEnterexit } from "react-icons/md";
-
-import { TrashIcon } from "@/components/TrashIcon";
 import { MouseEvent } from "react";
 import { useNavigate } from "react-router-dom";
+import { MdTransitEnterexit } from "react-icons/md";
+
+import { TrashIcon } from "../../../components/TrashIcon";
 import { Button } from "../../Button";
 import type { CartProps } from "./types";
+
 export const Cart = (props: CartProps) => {
   const navigate = useNavigate();
   const onRemoveItem = (id: number, event: MouseEvent) => {
