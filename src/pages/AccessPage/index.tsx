@@ -1,7 +1,46 @@
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
+import backgroundImage from "../../assets/images/library.jpg";
+import { Button } from "../../components/Button";
+import { ROUTES } from "../../routes";
+
 export const AccessPage = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      navigate(ROUTES.CATALOG);
+    }, 5000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const handleButtonRoute = (route: string) => {
+    navigate(route);
+  }
+
   return (
-    <div>
-      <h1>Acccess Page</h1>
+    <div className="relative w-full flex items-center justify-center h-screen text-white ">
+      <img
+        src={backgroundImage}
+        alt="Background"
+        className="absolute inset-0 w-full h-full object-cover blur-sm brightness-75"
+      />
+      <div className="text-center max-w-lg p-6 z-0">
+        <h1 className="text-4xl text-white font-bold mb-4">Relatos de Papel</h1>
+        <p className="text-lg text-gray-100 mb-6">
+          Bienvenido a Relatos de Papel, una librería donde cada historia cobra
+          vida.
+        </p>
+        <div className="flex justify-center gap-4">
+          <Button type="button" onClick={() => handleButtonRoute(ROUTES.REGISTER)} variant="primary" className="px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition cursor-pointer">
+            Registrarse
+          </Button>
+          <Button type="button" onClick={() => handleButtonRoute(ROUTES.CATALOG)} variant="primary" className="px-6 py-3 bg-black text-white rounded-lg hover:bg-gray-600 transition cursor-pointer">
+            Ver Catálogo
+          </Button>
+        </div>
+      </div>
     </div>
   );
 };
