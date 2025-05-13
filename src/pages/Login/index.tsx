@@ -62,7 +62,7 @@ export const Login = () => {
   return (
     <main className="container py-16 flex items-center justify-center">
       <form
-        className="p-4 flex flex-col gap-4 min-w-[290px] w-full max-w-[400px] rounded-xl border"
+        className="p-4 flex flex-col gap-4 min-w-[290px] w-full max-w-[400px] rounded-xl bg-gray-300/10 shadow-lg"
         onSubmit={handleSubmit}
       >
         <h2 className="text-2xl font-bold mb-4">Iniciar Sesión</h2>
