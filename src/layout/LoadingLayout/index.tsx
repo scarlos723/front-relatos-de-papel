@@ -1,4 +1,4 @@
-import { Outlet, useNavigation } from "react-router";
+import { Outlet, useNavigation } from "react-router-dom";
 
 export const LoadingLayout = () => {
   const navigation = useNavigation();
