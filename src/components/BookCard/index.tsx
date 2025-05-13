@@ -3,11 +3,11 @@ import { FaCartPlus } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
 import { useHandleCart } from "../../hooks/useHandleCart/useHandleCart";
-import type { BookCardProps } from "./types";
 import { ROUTES } from "../../routes";
+import type { BookCardProps } from "./types";
 
 export const BookCard = (props: BookCardProps) => {
-  const {handleAddItem} = useHandleCart()
+  const { handleAddItem } = useHandleCart();
   const navigate = useNavigate();
   const { id, title, price, image, type, author, reviews, description } = props;
 
@@ -22,10 +22,10 @@ export const BookCard = (props: BookCardProps) => {
       author,
       reviews,
       description,
-      quantity: 1
+      quantity: 1,
     };
     handleAddItem(item);
-  }
+  };
 
   const handleNavigate = () => {
     navigate(`${ROUTES.CATALOG}/${id}`);
@@ -33,12 +33,12 @@ export const BookCard = (props: BookCardProps) => {
 
   return (
     <article
-      className="border border-gray-400 rounded-lg w-[310px] md:w-[280px] lg:w-[200px] borderbox p-4 grid gap-4 cursor-pointer"
+      className="bg-gray-300/10 shadow rounded-lg w-[310px] md:w-[280px] lg:w-[200px] borderbox p-4 grid gap-4 cursor-pointer"
       onClick={handleNavigate}
     >
       <img
         src={image}
-        className="w-full h-[247px] bg-gray-400 object-cover"
+        className="w-full aspect-[15/21] bg-gray-400 object-cover"
       />
       <div>
         <h4 className="h-[48px] line-clamp-2">{title}</h4>
@@ -46,7 +46,10 @@ export const BookCard = (props: BookCardProps) => {
         <p className="font-bold">$ {price.toFixed(2)} </p>
         <div className="flex items-center justify-between mt-2">
           <small>{type}</small>
-          <FaCartPlus onClick={(event) => handleAddToCart(event)} className="text-[1.2rem] text-white cursor-pointer hover:text-gray-400 transition-all duration-300" />
+          <FaCartPlus
+            onClick={(event) => handleAddToCart(event)}
+            className="text-[1.2rem] text-white cursor-pointer hover:text-gray-400 transition-all duration-300"
+          />
         </div>
       </div>
     </article>
