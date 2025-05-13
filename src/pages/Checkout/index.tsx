@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
-
 import { BiMinus } from "react-icons/bi";
 import { CgCreditCard } from "react-icons/cg";
 import { PiPaypalLogo, PiPlus } from "react-icons/pi";
+
 import { Button } from "../../components/Button";
 import { Input } from "../../components/Input";
 import { Seo } from "../../components/Seo";
 import { TrashIcon } from "../../components/TrashIcon";
 import { useCartStore } from "../../store/cart";
+import { Book } from "../../types";
 
 export const Checkout = () => {
   const [paymentMethod, setPaymentMethod] = useState("paypal");
@@ -30,6 +31,11 @@ export const Checkout = () => {
     event.preventDefault();
     // alert(`Pago realizado con ${paymentMethod}`);
   };
+
+  const handleAddItem = (product: Book) => {
+    addItem({... product, quantity: 1});
+  };
+
   useEffect(() => {
     const subtotal = items.reduce(
       (total, product) => total + product.price * product.quantity,
@@ -90,7 +96,7 @@ export const Checkout = () => {
                       <button
                         type="button"
                         className="p-1 cursor-pointer"
-                        onClick={() => addItem(product)}
+                        onClick={() => handleAddItem(product)}
                       >
                         <PiPlus />
                       </button>

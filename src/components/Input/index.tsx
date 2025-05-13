@@ -4,7 +4,6 @@ export const Input = (props: InputProps) => {
   const {
     id,
     label,
-
     error = "",
   } = props
 
