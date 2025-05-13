@@ -33,7 +33,7 @@ export const Checkout = () => {
   };
 
   const handleAddItem = (product: Book) => {
-    addItem({... product, quantity: 1});
+    addItem({ ...product, quantity: 1 });
   };
 
   useEffect(() => {
@@ -57,7 +57,7 @@ export const Checkout = () => {
         onSubmit={handleSubmit}
         className="space-y-6 lg:grid lg:grid-cols-[2fr_1fr] gap-4"
       >
-        <section className="border border-white rounded-md p-4 lg:order-2 flex flex-col gap-4">
+        <section className="bg-gray-300/10 shadow-lg rounded-md p-4 lg:order-2 flex flex-col gap-4">
           <h2 className="text-2xl font-bold">En el carrito:</h2>
           <hr />
           <ul className="space-y-2 max-h-[300px] overflow-y-auto">

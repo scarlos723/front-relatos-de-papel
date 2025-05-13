@@ -70,7 +70,7 @@ export const Register = () => {
   return (
     <main className="container py-16 flex items-center justify-center">
       <form
-        className=" flex min-w-[290px] w-full max-w-[400px] flex-col gap-4 p-4 rounded-xl border"
+        className=" flex min-w-[290px] w-full max-w-[400px] flex-col gap-4 p-4 rounded-xl bg-gray-300/10 shadow-lg"
         onSubmit={handleSubmit}
       >
         <h2>

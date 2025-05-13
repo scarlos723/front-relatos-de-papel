@@ -8,7 +8,8 @@ export const LIST_BOOKS = [
     image: "https://picsum.photos/200/300",
     type: "Fisico",
     author: "John Doe",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     quantity: 10,
     reviews: [
       {
@@ -32,7 +33,8 @@ export const LIST_BOOKS = [
     image: "https://picsum.photos/200/299",
     type: "Dígital",
     author: "John Doe",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     quantity: 5,
     reviews: [
       {
@@ -56,7 +58,8 @@ export const LIST_BOOKS = [
     image: "https://picsum.photos/200/303",
     type: "Fisico",
     author: "John Doe",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     quantity: 8,
     reviews: [
       {
@@ -80,7 +83,8 @@ export const LIST_BOOKS = [
     image: "https://picsum.photos/200/301",
     type: "Dígital",
     author: "John Doe",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     quantity: 12,
     reviews: [
       {
@@ -104,7 +108,8 @@ export const LIST_BOOKS = [
     image: "https://picsum.photos/200/310",
     type: "Fisico",
     author: "John Doe",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     quantity: 7,
     reviews: [
       {
@@ -128,7 +133,8 @@ export const LIST_BOOKS = [
     image: "https://picsum.photos/200/220",
     type: "Dígital",
     author: "John Doe",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     quantity: 15,
     reviews: [
       {
@@ -152,7 +158,8 @@ export const LIST_BOOKS = [
     image: "https://picsum.photos/200/210",
     type: "Fisico",
     author: "John Doe",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     quantity: 20,
     reviews: [
       {
@@ -176,7 +183,8 @@ export const LIST_BOOKS = [
     image: "https://picsum.photos/199/201",
     type: "Dígital",
     author: "John Doe",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     quantity: 3,
     reviews: [
       {
@@ -200,7 +208,8 @@ export const LIST_BOOKS = [
     image: "https://picsum.photos/200/301",
     type: "Dígital",
     author: "John Doe",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     quantity: 3,
     reviews: [
       {
@@ -224,7 +233,8 @@ export const LIST_BOOKS = [
     image: "https://picsum.photos/200/310",
     type: "Fisico",
     author: "John Doe",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     quantity: 3,
     reviews: [
       {
@@ -248,7 +258,8 @@ export const LIST_BOOKS = [
     image: "https://picsum.photos/200/220",
     type: "Dígital",
     author: "John Doe",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     quantity: 3,
     reviews: [
       {
@@ -272,7 +283,8 @@ export const LIST_BOOKS = [
     image: "https://picsum.photos/200/210",
     type: "Fisico",
     author: "John Doe",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     quantity: 3,
     reviews: [
       {
@@ -296,7 +308,8 @@ export const LIST_BOOKS = [
     image: "https://picsum.photos/199/201",
     type: "Dígital",
     author: "John Doe",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     quantity: 3,
     reviews: [
       {
@@ -337,4 +350,3 @@ export const PRODUCTS = [
     price: 50.0,
   },
 ];
-
