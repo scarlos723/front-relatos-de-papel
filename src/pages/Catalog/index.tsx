@@ -28,6 +28,7 @@ export const Catalog = () => {
               type="text"
               placeholder="Buscar libro"
               className="py-1 outline-none w-[280px]"
+              id="search"
               onChange={handleSearch}
             />
             <div className="absolute right-8">

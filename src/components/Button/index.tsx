@@ -4,6 +4,7 @@ export const Button = ({
   variant = "primary",
   asChild = false,
   disabled = false,
+  id = "",
   className = "",
   children,
   onClick,
@@ -34,6 +35,7 @@ export const Button = ({
   const baseStyles ="px-2 py-1 cursor-pointer rounded-md font-semibold transition-colors"
   return (
     <Component
+      id={id}
       className={cntr(
         [ baseStyles,variants[variant], sizes[size], className]
       )}

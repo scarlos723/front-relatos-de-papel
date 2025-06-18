@@ -12,6 +12,7 @@ import { Book } from "../../types";
 
 export const Checkout = () => {
   const [paymentMethod, setPaymentMethod] = useState("paypal");
+  const [message, setMessage] = useState("");
   const [totals, setTotals] = useState({
     subtotal: 0,
     shipping: 0,
@@ -29,7 +30,7 @@ export const Checkout = () => {
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    // alert(`Pago realizado con ${paymentMethod}`);
+    setMessage(`Pago realizado exitosamente con ${paymentMethod}`);
   };
 
   const handleAddItem = (product: Book) => {
@@ -140,7 +141,7 @@ export const Checkout = () => {
             <Input id="name" label="Nombre Completo" type="text" />
             <Input id="phone" label="Teléfono" type="tel" />
             <Input id="email" label="Correo Electrónico" type="email" />
-            <Input id="contry" label="Pais" type="text" />
+            <Input id="country" label="Pais" type="text" />
             <Input id="city" label="Ciudad" type="text" />
             <Input id="address" label="Dirección" type="text" />
             <div className="py-4 border rounded-2xl p-4">
@@ -198,6 +199,11 @@ export const Checkout = () => {
               Pagar
             </Button>
           </div>
+          {message && (
+            <div id="message" className="mt-4 text-green-500 font-semibold">
+              {message}
+            </div>
+          )}
         </section>
       </form>
     </main>
