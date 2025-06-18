@@ -7,6 +7,7 @@ export interface ButtonProps {
   type?: "button" | "submit" | "reset";
   disabled?: boolean;
   asChild?: boolean;
+  id?: string;
   className?: string;
   size?: "sm" | "md" | "lg";
 }
