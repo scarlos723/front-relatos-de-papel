@@ -18,7 +18,7 @@ export const Input = (props: InputProps) => {
         name={id}
         className="w-full border border-gray-300 rounded-md p-2"
       />
-      {error && <span className="absolute -bottom-4 right-0 text-red-500 text-xs">{error}</span>}
+      {error && <span id={`message-error-${id}`} className="absolute -bottom-4 right-0 text-red-500 text-xs">{error}</span>}
     </div>
   )
 }

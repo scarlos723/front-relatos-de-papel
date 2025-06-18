@@ -52,6 +52,11 @@ export const config: WebdriverIO.Config = {
   // https://saucelabs.com/platform/platform-configurator
   //
   capabilities: [{
+<<<<<<< HEAD
+    browserName: 'MicrosoftEdge'
+  }, {
+=======
+>>>>>>> main
     browserName: 'chrome'
   }],
 
