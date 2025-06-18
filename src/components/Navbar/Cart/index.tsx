@@ -19,6 +19,7 @@ export const Cart = (props: CartProps) => {
 
   const handleCheckoutButton = () => {
     navigate("/pagar");
+    props.handleCloseCart();
   };
 
   return (
@@ -87,6 +88,7 @@ export const Cart = (props: CartProps) => {
             <Button
               variant="primary"
               type="button"
+              id="checkout-button"
               className="bg-blue-500 text-white px-4 py-2 rounded-lg"
               onClick={handleCheckoutButton}
             >
