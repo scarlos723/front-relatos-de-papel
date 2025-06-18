@@ -4,11 +4,13 @@ import { expect } from '@wdio/globals'
 import CatalogPage from '../pageobjects/catalog.page.js';
 import BookDetailPage from '../pageobjects/bookDetail.page.js';
 import CheckoutPage from '../pageobjects/checkout.page.js';
+import registerPage from '../pageobjects/register.page.js';
 
 const pages = {
   catalogo: CatalogPage,
   detalle: BookDetailPage, // Assuming you have a BookDetailPage
-  pagar: CheckoutPage
+  pagar: CheckoutPage,
+  registrar: registerPage
 }
 
 Given(/^Estoy en la pagina de (\w+)$/, async (page) => {
@@ -56,3 +58,25 @@ Then(/^Veo un mensaje de confirmación de compra$/, async () => {
   await expect(CheckoutPage.message).toHaveText(expect.stringContaining("Pago realizado exitosamente con paypal"));
 });
 
+
+// Register steps
+Given(/^Estoy en la página de registro$/, async () => {
+  await registerPage.open();
+});
+
+When(/^Lleno el formulario de registro con los siguientes datos$/, async (dataTable) => {
+  const data = dataTable.hashes();
+  await registerPage.registerUser(data[0].email, data[0].password, data[0].confirmPassword);
+});
+
+Then(/^El usuario es registrado correctamente$/, async () => {
+  await expect(CatalogPage.inputUsername).toBeExisting();
+});
+
+Then(/^Se muestra un mensaje de error indicando que las contraseñas no coinciden$/, async () => {
+  await expect(registerPage.messageError).toHaveText("Las contraseñas no coinciden");
+});
+
+Then(/^Se muestra un mensaje de error indicando que la contraseña no es válida$/, async () => {
+  await expect(registerPage.messagePasswordError).toHaveText("La contraseña debe tener al menos 6 caracteres");
+});
