@@ -34,6 +34,7 @@ export const BookCard = (props: BookCardProps) => {
   return (
     <article
       className="bg-gray-300/10 shadow rounded-lg w-[310px] md:w-[280px] lg:w-[200px] borderbox p-4 grid gap-4 cursor-pointer"
+      id="book-card"
       onClick={handleNavigate}
     >
       <img

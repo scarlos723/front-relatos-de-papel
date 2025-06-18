@@ -27,6 +27,7 @@ export const CartButton = () => {
     <div className="static lg:relative">
       <button
         type="button"
+        id="cart-button"
         className={`radius-full ${
           !openCart ? "bg-white" : "bg-black"
         } p-2 rounded-full cursor-pointer relative transition-all duration-400`}
