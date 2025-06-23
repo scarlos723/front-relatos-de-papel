@@ -13,4 +13,3 @@ Feature: Comprar un libro
       | John Doe | 1234567890 | test@gmail.com | USA | New York | 123 Main St |
     And Confirmo el pago
     Then Veo un mensaje de confirmación de compra
-
