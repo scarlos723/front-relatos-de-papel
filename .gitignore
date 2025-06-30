@@ -7,6 +7,8 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+allure-report
+allure-results
 node_modules
 dist
 dist-ssr
