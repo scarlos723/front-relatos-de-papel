@@ -2,7 +2,9 @@ import { Book } from "@/types";
 import axios from "axios";
 import { Aggregations } from "../types/aggegation.types";
 
-const BASE_URL = `${import.meta.env.VITE_BACKEND_URL}/ms-elastic-catalogue`;
+const BASE_URL = `${
+  import.meta.env.VITE_BACKEND_URL || "http://localhost:3000"
+}/ms-elastic-catalogue`;
 
 const axiosInstance = axios.create({
   baseURL: BASE_URL,

@@ -27,6 +27,7 @@ const useCatalogBooks = () => {
     const value = e.target.value.toLowerCase();
     try {
       setLoading(true);
+      console.log("Search value:", value);
     } catch (error) {
       console.error("Error during search:", error);
     } finally {
