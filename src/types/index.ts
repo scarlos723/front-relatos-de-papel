@@ -6,15 +6,19 @@ export interface Review {
 }
 
 export interface Book {
-  id: number;
+  id: string;
   title: string;
-  price: number;
-  image: string;
-  type: string;
   author: string;
+  category: string;
+  isbn: string;
+  publicationDate: string; // ISO date string format
+  rating: number | null;
+  price: number;
   description: string;
-  quantity: number;
-  reviews: Review[];
+  visible: boolean;
+  // Campos adicionales que tienes en el frontend
+  image?: string;
+  type?: string;
+  quantity?: number;
+  reviews?: Review[];
 }
-
-export type Books = Book[];

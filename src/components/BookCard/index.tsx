@@ -1,34 +1,23 @@
+import { Book } from "@/types";
 import type { MouseEvent } from "react";
 import { FaCartPlus } from "react-icons/fa";
+import { ImBook } from "react-icons/im";
 import { useNavigate } from "react-router-dom";
-
 import { useHandleCart } from "../../hooks/useHandleCart/useHandleCart";
 import { ROUTES } from "../../routes";
-import type { BookCardProps } from "./types";
 
-export const BookCard = (props: BookCardProps) => {
+export const BookCard = (props: { book: Book }) => {
   const { handleAddItem } = useHandleCart();
   const navigate = useNavigate();
-  const { id, title, price, image, type, author, reviews, description } = props;
-
+  const { book } = props;
   const handleAddToCart = (event: MouseEvent) => {
     event.stopPropagation();
-    const item = {
-      id,
-      title,
-      price,
-      image,
-      type,
-      author,
-      reviews,
-      description,
-      quantity: 1,
-    };
-    handleAddItem(item);
+
+    handleAddItem(book);
   };
 
   const handleNavigate = () => {
-    navigate(`${ROUTES.CATALOG}/${id}`);
+    navigate(`${ROUTES.CATALOG}/${book.id}`);
   };
 
   return (
@@ -37,16 +26,21 @@ export const BookCard = (props: BookCardProps) => {
       id="book-card"
       onClick={handleNavigate}
     >
-      <img
-        src={image}
-        className="w-full aspect-[15/21] bg-gray-400 object-cover"
-      />
+      <div className="w-full aspect-[15/21] bg-gray-400/20 backdrop-blur-2xl ">
+        {book.image ? (
+          <img src={book.image} className=" object-cover" />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center text-white">
+            <ImBook size={40} />
+          </div>
+        )}
+      </div>
       <div>
-        <h4 className="h-[48px] line-clamp-2">{title}</h4>
+        <h4 className="h-[48px] line-clamp-2">{book.title}</h4>
 
-        <p className="font-bold">$ {price.toFixed(2)} </p>
+        <p className="font-bold">$ {book.price.toFixed(2)} </p>
         <div className="flex items-center justify-between mt-2">
-          <small>{type}</small>
+          <small>{book.type}</small>
           <FaCartPlus
             onClick={(event) => handleAddToCart(event)}
             className="text-[1.2rem] text-white cursor-pointer hover:text-gray-400 transition-all duration-300"
