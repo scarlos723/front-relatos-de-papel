@@ -7,7 +7,7 @@ import { AggContainer } from "./components/AggContainer";
 import useCatalogBooks from "./hooks/useCatalogBooks";
 
 export const Catalog = () => {
-  const { agregations, listbooks, handleSearch, loading } = useCatalogBooks();
+  const { agregations, listbooks, handleSearchAgg, handleSearch, loading } = useCatalogBooks();
   return (
     <main className="container py-16">
       <Seo title="Catálogo"></Seo>
@@ -34,14 +34,17 @@ export const Catalog = () => {
                 <AggContainer
                   aggName="Categorías"
                   agregations={agregations.categories_agg}
+                  handleAgg={handleSearchAgg}
                 />
                 <AggContainer
                   aggName="Raiting"
                   agregations={agregations.rating_agg}
+                  handleAgg={handleSearchAgg}
                 />
                 <AggContainer
                   aggName="Price"
                   agregations={agregations.price_agg}
+                  handleAgg={handleSearchAgg}
                 />
               </div>
             )}

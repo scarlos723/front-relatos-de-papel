@@ -6,10 +6,11 @@ import { Button } from "../../components/Button";
 import { Review } from "../../components/Review";
 import { useHandleCart } from "../../hooks/useHandleCart/useHandleCart";
 import type { Book } from "../../types";
+import { ImBook } from "react-icons/im";
 
 export const BookDetail = () => {
   const book = useLoaderData() as Book;
-  const { handleAddItem } = useHandleCart()
+  const { handleAddItem } = useHandleCart();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -25,18 +26,14 @@ export const BookDetail = () => {
       <Seo title="Detalles"></Seo>
       <section className="grid grid-cols-1 lg:grid-cols-[auto_1fr] gap-8">
         <div className="flex justify-center">
-          <img
-            src={book.image}
-            alt="Book Cover"
-            className="w-auto h-full object-cover aspect-[15/21] rounded-lg"
-          />
+          <div className="w-full h-full flex items-center justify-center text-white">
+            <ImBook size={40} />
+          </div>
         </div>
         <div className="flex flex-col gap-4">
           <h2 className="font-bold text-5xl">{book.title}</h2>
           <h3 className="text-2xl">{book.author}</h3>
-          <p className="text-2xl font-bold">
-            {`$ ${book.price.toFixed(2)}`}
-          </p>
+          <p className="text-2xl font-bold">{`$ ${book.price.toFixed(2)}`}</p>
           <p>{book.description}</p>
           <form
             action=""
@@ -65,10 +62,10 @@ export const BookDetail = () => {
         </div>
       </section>
       <section className="">
-        {book.reviews.length > 0 ? (
+        {book?.reviews?.length > 0 ? (
           <div className="flex flex-col gap-4">
             <h2 className="text-3xl font-bold">Reseñas</h2>
-            {book.reviews.map((review) => (
+            {book?.reviews?.map((review) => (
               <Review
                 key={review.id}
                 id={review.id}

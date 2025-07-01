@@ -1,6 +1,6 @@
 import { Book } from "@/types";
 import React, { useEffect, useState } from "react";
-import { getAllBooks } from "../services/book.services";
+import { getAllBooks, searchBooks } from "../services/book.services";
 import { Aggregations } from "../types/aggegation.types";
 
 const useCatalogBooks = () => {
@@ -25,15 +25,44 @@ const useCatalogBooks = () => {
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.toLowerCase();
-    try {
-      setLoading(true);
-      console.log("Search value:", value);
-    } catch (error) {
-      console.error("Error during search:", error);
-    } finally {
-      setLoading(false);
+    if (value.length <= 3) {
+      getAllBooks()
+        .then((data) => {
+          console.log("Resetting search results:", data);
+          setListBooks(data.books);
+        })
+        .catch((error) => {
+          console.error("Error resetting search results:", error);
+        });
+    } else {
+      searchBooks(value)
+        .then((data) => {
+          console.log("Search results:", data);
+          setListBooks(data.books);
+          setAgregations(data.aggregations);
+        })
+        .catch((error) => {
+          console.error("Error searching books:", error);
+        });
     }
   };
+
+  const handleSearchAgg = (aggKey: string, data:string) => {
+    searchBooks(
+      null,
+      aggKey === "Categorías" ? data : null,
+      aggKey === "Raiting" ? data : null,
+      aggKey === "Price" ? data : null
+    )
+      .then((data) => {
+        setListBooks(data.books);
+        setAgregations(data.aggregations);
+      })
+      .catch((error) => {
+        console.error("Error searching books:", error);
+      });
+  };
+
   useEffect(() => {
     fetchBooks();
   }, []);
@@ -42,6 +71,7 @@ const useCatalogBooks = () => {
     agregations,
     listbooks,
     handleSearch,
+    handleSearchAgg,
     loading,
   };
 };

@@ -49,10 +49,30 @@ export const getAllBooks = async (): Promise<GetAllBooksResponse> => {
   }
 };
 
-export const searchBooks = async (query: string) => {
+export const searchBooks = async (
+  query: string | null = null,
+  category: string | null = null,
+  rating: string | null = null,
+  price: string | null = null
+) => {
   try {
-    const response = await axiosInstance.post(`/books/=${query}`);
-    return response.data;
+    const body: GetAllBooksBody = {
+      targetMethod: "GET",
+      queryParams: {
+        visible: [true],
+      },
+    };
+    const params = new URLSearchParams({
+      title: query ?? "",
+      category: category ?? "",
+      rating: rating ?? "",
+      price: price ?? "",
+    }).toString();
+    const response = await axiosInstance.post(`/books?${params}`, body);
+    return {
+      books: response.data.books,
+      aggregations: response.data.aggregations,
+    };
   } catch (error) {
     console.error("Error searching books:", error);
     throw error;
