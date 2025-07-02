@@ -7,4 +7,5 @@ export interface Aggregations {
 export interface Aggregation {
   key: string;
   count: number;
+  active?: boolean;
 }

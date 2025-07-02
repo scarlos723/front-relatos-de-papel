@@ -2,18 +2,31 @@ import { Book } from "@/types";
 import React, { useEffect, useState } from "react";
 import { getAllBooks, searchBooks } from "../services/book.services";
 import { Aggregations } from "../types/aggegation.types";
-
+interface Queries {
+  title: string | null;
+  query: string | null;
+  category: string | null;
+  rating: string | null;
+  price: string | null;
+}
 const useCatalogBooks = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [listbooks, setListBooks] = useState<Book[]>([]);
   const [agregations, setAgregations] = useState<Aggregations>();
 
+  const [queries, setQueries] = useState<Queries>({
+    title: null,
+    query: null,
+    category: null,
+    rating: null,
+    price: null,
+  });
+
   const fetchBooks = async () => {
     setLoading(true);
     try {
       const { books, aggregations } = await getAllBooks();
-      console.log("Books fetched successfully:", books);
-      console.log("Agregations fetched successfully:", aggregations);
+
       setListBooks(books);
       setAgregations(aggregations);
     } catch (error) {
@@ -25,47 +38,64 @@ const useCatalogBooks = () => {
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.toLowerCase();
-    if (value.length <= 3) {
-      getAllBooks()
-        .then((data) => {
-          console.log("Resetting search results:", data);
-          setListBooks(data.books);
-        })
-        .catch((error) => {
-          console.error("Error resetting search results:", error);
-        });
+    if (value.length > 1) {
+      setQueries((prev) => ({
+        ...prev,
+        title: value,
+      }));
     } else {
-      searchBooks(value)
-        .then((data) => {
-          console.log("Search results:", data);
-          setListBooks(data.books);
-          setAgregations(data.aggregations);
-        })
-        .catch((error) => {
-          console.error("Error searching books:", error);
-        });
-    }
-  };
-
-  const handleSearchAgg = (aggKey: string, data:string) => {
-    searchBooks(
-      null,
-      aggKey === "Categorías" ? data : null,
-      aggKey === "Raiting" ? data : null,
-      aggKey === "Price" ? data : null
-    )
-      .then((data) => {
+      getAllBooks().then((data) => {
         setListBooks(data.books);
         setAgregations(data.aggregations);
-      })
-      .catch((error) => {
-        console.error("Error searching books:", error);
       });
+      setQueries({
+        title: null,
+        query: null,
+        category: null,
+        rating: null,
+        price: null,
+      });
+    }
   };
+  const cleanFilter = (query: string) => {
+    setQueries((prev) => ({
+      ...prev,
+      [query]: null, // Set the specific query to null
+    }));
+  };
+  const handleSearchAgg = (aggKey: string, data: string, active: boolean) => {
+    const mappingQueries: Record<string, string> = {
+      título: "title",
+      Categorías: "category",
+      Raiting: "rating",
+      Price: "price",
+    };
+    const queryKey = mappingQueries[aggKey];
+    setQueries((prev) => ({
+      ...prev,
+      [queryKey]: active ? data : null, // Set to null if not active
+    }));
+  };
+  const fetchSeatch = async () => {
+    setLoading(true);
+    try {
+      const { books, aggregations } = await searchBooks(queries);
 
+      setListBooks(books);
+      setAgregations(aggregations);
+    } catch (error) {
+      console.error("Error searching books:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
   useEffect(() => {
     fetchBooks();
   }, []);
+
+  useEffect(() => {
+    fetchSeatch();
+  }, [queries]);
 
   return {
     agregations,
@@ -73,6 +103,8 @@ const useCatalogBooks = () => {
     handleSearch,
     handleSearchAgg,
     loading,
+    queries,
+    cleanFilter,
   };
 };
 

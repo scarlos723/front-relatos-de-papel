@@ -4,10 +4,20 @@ import { SearchIcon } from "../../components/SearchIcon";
 import { Seo } from "../../components/Seo";
 
 import { AggContainer } from "./components/AggContainer";
+import Filters from "./components/Filters";
 import useCatalogBooks from "./hooks/useCatalogBooks";
 
 export const Catalog = () => {
-  const { agregations, listbooks, handleSearchAgg, handleSearch, loading } = useCatalogBooks();
+  const {
+    agregations,
+    listbooks,
+    handleSearchAgg,
+    handleSearch,
+    loading,
+    queries,
+    cleanFilter,
+  } = useCatalogBooks();
+
   return (
     <main className="container py-16">
       <Seo title="Catálogo"></Seo>
@@ -29,20 +39,26 @@ export const Catalog = () => {
         </div>
         <div className="flex">
           <div className="min-w-[280px] hidden lg:block border-r border-gray-600 mr-4">
+            <Filters queries={queries} cleanFilter={cleanFilter}></Filters>
             {agregations && (
               <div className="flex flex-col gap-4">
                 <AggContainer
                   aggName="Categorías"
+                  querie={queries.category}
                   agregations={agregations.categories_agg}
                   handleAgg={handleSearchAgg}
                 />
+                <hr />
                 <AggContainer
                   aggName="Raiting"
+                  querie={queries.rating}
                   agregations={agregations.rating_agg}
                   handleAgg={handleSearchAgg}
                 />
+                <hr />
                 <AggContainer
                   aggName="Price"
+                  querie={queries.price}
                   agregations={agregations.price_agg}
                   handleAgg={handleSearchAgg}
                 />

@@ -38,7 +38,7 @@ export const getAllBooks = async (): Promise<GetAllBooksResponse> => {
       },
     };
     const response = await axiosInstance.post("/books", body);
-    console.log("Books fetched successfully:", response);
+
     return {
       books: response.data.books,
       aggregations: response.data.aggregations,
@@ -49,12 +49,13 @@ export const getAllBooks = async (): Promise<GetAllBooksResponse> => {
   }
 };
 
-export const searchBooks = async (
-  query: string | null = null,
-  category: string | null = null,
-  rating: string | null = null,
-  price: string | null = null
-) => {
+export const searchBooks = async (props: {
+  title: string | null;
+  query: string | null;
+  category: string | null;
+  rating: string | null;
+  price: string | null;
+}) => {
   try {
     const body: GetAllBooksBody = {
       targetMethod: "GET",
@@ -62,12 +63,14 @@ export const searchBooks = async (
         visible: [true],
       },
     };
-    const params = new URLSearchParams({
-      title: query ?? "",
-      category: category ?? "",
-      rating: rating ?? "",
-      price: price ?? "",
-    }).toString();
+    const getParams: Record<string, string> = {};
+    for (const [key, value] of Object.entries(props)) {
+      if (value) {
+        getParams[key] = value;
+      }
+    }
+    const params = new URLSearchParams(getParams).toString();
+
     const response = await axiosInstance.post(`/books?${params}`, body);
     return {
       books: response.data.books,

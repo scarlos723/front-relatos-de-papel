@@ -5,6 +5,7 @@ import { ImBook } from "react-icons/im";
 import { useNavigate } from "react-router-dom";
 import { useHandleCart } from "../../hooks/useHandleCart/useHandleCart";
 import { ROUTES } from "../../routes";
+import { StarsGroup } from "../StarsGroup";
 
 export const BookCard = (props: { book: Book }) => {
   const { handleAddItem } = useHandleCart();
@@ -39,6 +40,7 @@ export const BookCard = (props: { book: Book }) => {
         <h4 className="h-[48px] line-clamp-2">{book.title}</h4>
 
         <p className="font-bold">$ {book.price.toFixed(2)} </p>
+        {book?.rating && <StarsGroup rating={book.rating} />}
         <div className="flex items-center justify-between mt-2">
           <small>{book.type}</small>
           <FaCartPlus

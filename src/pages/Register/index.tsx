@@ -54,8 +54,6 @@ export const Register = () => {
     event.preventDefault();
     if (validateForm()) return;
 
-    // TODO: Llamar API
-    console.log("Form data:", values);
     setUser({
       id: 1,
       email: values.email,
