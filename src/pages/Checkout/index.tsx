@@ -39,13 +39,13 @@ export const Checkout = () => {
 
   useEffect(() => {
     const subtotal = items.reduce(
-      (total, product) => total + product.price * product.quantity,
+      (total, product) => total + product.price * (product.quantity ?? 1),
       0
     );
     const shipping = 0;
     const total = subtotal + shipping;
     const products = items.reduce(
-      (total, product) => total + product.quantity,
+      (total, product) => total + (product.quantity ?? 1),
       0
     );
     setTotals({ subtotal, shipping, total, products });
@@ -78,7 +78,10 @@ export const Checkout = () => {
                         {product.title}
                       </h3>
                       <p className="text-sm  font-bold">
-                        $ {Number(product.quantity * product.price).toFixed(2)}
+                        ${" "}
+                        {Number(
+                          (product?.quantity ?? 1) * (product?.price ?? 0)
+                        ).toFixed(2)}
                       </p>
                     </div>
 
@@ -88,11 +91,11 @@ export const Checkout = () => {
                         className="p-1 cursor-pointer"
                         onClick={() => removeItem(product.id)}
                       >
-                        {product.quantity === 1 ? <TrashIcon /> : <BiMinus />}
+                        {product?.quantity === 1 ? <TrashIcon /> : <BiMinus />}
                       </button>
 
                       <p className="text-sm font-bold p-2 text-center">
-                        {product.quantity}
+                        {product?.quantity}
                       </p>
                       <button
                         type="button"

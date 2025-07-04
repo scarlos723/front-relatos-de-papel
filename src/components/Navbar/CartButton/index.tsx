@@ -1,16 +1,16 @@
-import { FaShoppingCart } from "react-icons/fa";
 import type { MouseEvent } from "react";
+import { FaShoppingCart } from "react-icons/fa";
 
-import { Cart } from "../Cart";
 import { useState } from "react";
 import { useClickOutside } from "../../../hooks/useClickOutside/useClickOutside";
 import { useHandleCart } from "../../../hooks/useHandleCart/useHandleCart";
+import { Cart } from "../Cart";
 
 export const CartButton = () => {
   const { getCartItems, handleRemoveItem, handleClearCart } = useHandleCart();
   const [openCart, setOpenCart] = useState(false);
 
-  const {referencia} = useClickOutside({
+  const { referencia } = useClickOutside({
     handleAction: () => setOpenCart(false),
   });
 
@@ -35,9 +35,7 @@ export const CartButton = () => {
       >
         <FaShoppingCart
           className={`text-[1.2rem] ${
-            !openCart
-              ? "text-black"
-              : "text-white transition-all duration-400"
+            !openCart ? "text-black" : "text-white transition-all duration-400"
           }`}
         />
         {getCartItems().length > 0 && (
@@ -49,12 +47,12 @@ export const CartButton = () => {
       {openCart && (
         <Cart
           ref={referencia}
-          items={getCartItems()}
+          getCartItems={getCartItems}
           handleRemoveItem={handleRemoveItem}
           handleClearCart={handleClearCart}
           handleCloseCart={handleCloseCart}
         />
       )}
     </div>
-  )
-}
+  );
+};
