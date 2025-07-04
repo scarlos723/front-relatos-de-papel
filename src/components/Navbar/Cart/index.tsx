@@ -1,6 +1,6 @@
 import { MouseEvent } from "react";
-import { useNavigate } from "react-router-dom";
 import { MdTransitEnterexit } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 
 import { TrashIcon } from "../../../components/TrashIcon";
 import { Button } from "../../Button";
@@ -8,7 +8,7 @@ import type { CartProps } from "./types";
 
 export const Cart = (props: CartProps) => {
   const navigate = useNavigate();
-  const onRemoveItem = (id: number, event: MouseEvent) => {
+  const onRemoveItem = (id: string, event: MouseEvent) => {
     event.stopPropagation();
     props.handleRemoveItem(id);
   };
@@ -82,7 +82,10 @@ export const Cart = (props: CartProps) => {
             <h2 className="text-black font-semibold text-lg">
               Total: $
               {props.items
-                .reduce((acc, item) => acc + item.price * item.quantity, 0)
+                .reduce(
+                  (acc, item) => acc + item.price * (item.quantity ?? 1),
+                  0
+                )
                 .toFixed(2)}
             </h2>
             <Button

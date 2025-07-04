@@ -14,7 +14,9 @@ export const useCartStore = create<CartState>()(
           if (existingItem) {
             return {
               items: state.items.map((i) =>
-                i.id === item.id ? { ...i, quantity: i.quantity + item.quantity } : i
+                i.id === item.id
+                  ? { ...i, quantity: (i.quantity ?? 0) + (item.quantity ?? 1) }
+                  : i
               ),
             };
           } else {
@@ -25,16 +27,23 @@ export const useCartStore = create<CartState>()(
         }),
       removeItem: (id) =>
         set((state) => {
-          const quantity = state.items.find((i) => i.id == id)?.quantity ?? 0;
+          const quantity =
+            state.items.find((i) => String(i.id) === String(id))?.quantity ?? 0;
 
           if (quantity > 1) {
             return {
               items: state.items.map((i) =>
-                i.id === id ? { ...i, quantity: i.quantity - 1 } : i
+                String(i.id) === String(id)
+                  ? { ...i, quantity: (i.quantity ?? 1) - 1 }
+                  : i
               ),
             };
           } else {
-            return { items: state.items.filter((item) => item.id !== id) };
+            return {
+              items: state.items.filter(
+                (item) => String(item.id) !== String(id)
+              ),
+            };
           }
         }),
       clearCart: () => set({ items: [] }),
