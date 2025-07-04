@@ -89,7 +89,7 @@ export const Checkout = () => {
                       <button
                         type="button"
                         className="p-1 cursor-pointer"
-                        onClick={() => removeItem(Number(product.id))}
+                        onClick={() => removeItem(product.id)}
                       >
                         {product?.quantity === 1 ? <TrashIcon /> : <BiMinus />}
                       </button>

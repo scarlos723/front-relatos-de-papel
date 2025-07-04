@@ -1,13 +1,16 @@
-import { MouseEvent } from "react";
+import { MouseEvent, useEffect, useState } from "react";
 import { MdTransitEnterexit } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 
+import { Book } from "@/types";
 import { TrashIcon } from "../../../components/TrashIcon";
 import { Button } from "../../Button";
 import type { CartProps } from "./types";
 
 export const Cart = (props: CartProps) => {
   const navigate = useNavigate();
+
+  const [items, setItems] = useState<Book[]>([]);
   const onRemoveItem = (id: string, event: MouseEvent) => {
     event.stopPropagation();
     props.handleRemoveItem(id);
@@ -21,6 +24,9 @@ export const Cart = (props: CartProps) => {
     navigate("/pagar");
     props.handleCloseCart();
   };
+  useEffect(() => {
+    setItems(props.getCartItems());
+  }, [props.getCartItems]);
 
   return (
     <div
@@ -31,7 +37,7 @@ export const Cart = (props: CartProps) => {
         <h2 className="text-black font-semibold text-xl text-center">
           Carrito de Compras
         </h2>
-        {props.items.length > 0 && (
+        {items.length > 0 && (
           <h2
             className="text-gray-600 text-sm text-center mb-2 cursor-pointer"
             onClick={(event) => onHandleClearCart(event)}
@@ -40,12 +46,12 @@ export const Cart = (props: CartProps) => {
           </h2>
         )}
         <div className="flex flex-col justify-between mt-2 overflow-auto h-[250px] pr-4">
-          {props.items.length === 0 ? (
+          {items.length === 0 ? (
             <p className="text-gray-600 text-base text-center">
               No hay productos en el carrito.
             </p>
           ) : (
-            props.items.map((item) => (
+            items.map((item) => (
               <div
                 key={item.id}
                 className="grid grid-cols-3 justify-items-center gap-4 mb-4 border-b border-gray-300 pb-2"
@@ -77,11 +83,11 @@ export const Cart = (props: CartProps) => {
             ))
           )}
         </div>
-        {props.items.length > 0 && (
+        {items.length > 0 && (
           <div className="flex flex-col items-center justify-center mt-4">
             <h2 className="text-black font-semibold text-lg">
               Total: $
-              {props.items
+              {items
                 .reduce(
                   (acc, item) => acc + item.price * (item.quantity ?? 1),
                   0
